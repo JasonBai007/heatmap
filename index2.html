@@ -27,7 +27,7 @@
     }
     
     #container {
-      height: 500px;
+      height: 90%;
       width: 100%;
     }
     
@@ -422,10 +422,6 @@
       "count": 8
     }];
 
-
-    if (!isSupportCanvas()) {
-      alert('热力图目前只支持有canvas支持的浏览器,您所使用的浏览器不能使用热力图功能~')
-    }
     //详细的参数,可以查看heatmap.js的文档 https://github.com/pa7/heatmap.js/blob/master/README.md
     //参数说明如下:
     /* visible 热力图是否显示,默认为true
@@ -441,13 +437,22 @@
 		    value 为颜色值. 
      */
     heatmapOverlay = new BMapLib.HeatmapOverlay({
-      "radius": 20
+      radius: 20,
+      maxOpacity: .5,
+      minOpacity: 0,
+      // blur: .9,
+      // gradient: {
+      //   '.5': 'blue',
+      //   '.8': 'green',
+      //   '.95': 'red'
+      // }
     });
     map.addOverlay(heatmapOverlay);
     heatmapOverlay.setDataSet({
       data: points,
       max: 100
     });
+
     //是否显示热力图
     function openHeatmap() {
       heatmapOverlay.show();
@@ -456,30 +461,7 @@
     function closeHeatmap() {
       heatmapOverlay.hide();
     }
-    closeHeatmap();
-
-    function setGradient() {
-      /*格式如下所示:
-		{
-	  		0:'rgb(102, 255, 0)',
-	 	 	.5:'rgb(255, 170, 0)',
-		  	1:'rgb(255, 0, 0)'
-		}*/
-      var gradient = {};
-      var colors = document.querySelectorAll("input[type='color']");
-      colors = [].slice.call(colors, 0);
-      colors.forEach(function(ele) {
-        gradient[ele.getAttribute("data-key")] = ele.value;
-      });
-      heatmapOverlay.setOptions({
-        "gradient": gradient
-      });
-    }
-    //判断浏览区是否支持canvas
-    function isSupportCanvas() {
-      var elem = document.createElement('canvas');
-      return !!(elem.getContext && elem.getContext('2d'));
-    }
+    
   </script>
 </body>
 

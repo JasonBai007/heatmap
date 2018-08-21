@@ -34,3 +34,7 @@ generate a heatmap with baidu map api.
 3. 创建应用（同时会获得密钥AK）
 4. 替换html页面中的ak值
 5. 看文档撸码
+
+## screenshot
+![image](https://github.com/jasonBai007/heatmap/raw/master/screenshot.jpg)
+

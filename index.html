@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Map</title>  
+  <title>Map</title>
   <!-- 引入百度地图，参数ak是你申请的开发密钥 -->
-  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=yourak"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=E4805d16520de693a3fe707cdc962045"></script>
   <!-- 引入 ECharts -->
   <script src="js/echarts.min.js"></script>
   <!-- 引入百度地图扩展 -->
@@ -18,13 +18,6 @@
 <body>
   <div id="main" style="width: 1200px;height:800px;"></div>
   <script type="text/javascript">
-    // var map = new BMap.Map("container");
-    // // 创建地图实例  
-    // var point = new BMap.Point(116.404, 39.915);
-    // // 创建点坐标  
-    // map.centerAndZoom(point, 15);
-    // 初始化地图，设置中心点坐标和地图级别
-    
     // 创建echarts实例
     var myChart = echarts.init(document.getElementById('main'));
     var data = [
@@ -5832,11 +5825,9 @@
         blurSize: 6
       }]
     });
-    // if (!app.inNode) {
     // 添加百度地图插件
     var bmap = myChart.getModel().getComponent('bmap').getBMap();
     bmap.addControl(new BMap.MapTypeControl());
-    // }
   </script>
 </body>
 

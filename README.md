@@ -17,6 +17,20 @@ generate a heatmap with baidu map api.
 1. 逻辑简单
 2. 依赖少
 
+数据结构：
+
+```javascripte
+[{
+  "lng": 116.42076,  // 经度
+  "lat": 39.915251,  // 维度
+  "count": 67  // 热度值
+},{
+  "lng": 113.64533,
+  "lat": 37.75675,
+  "count": 70
+}]
+```
+
 ## techs two（可供参考）
 
 1. [百度地图API](http://lbsyun.baidu.com/index.php?title=jspopular)

@@ -3,7 +3,6 @@
 <head>
     <title>批量查询经纬度</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" />
     <style>
         body {
             padding-top: 20px;
@@ -13,7 +12,6 @@
             height: 480px;
         }
     </style>
-    <script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=zuBIEvSSyqLKr2Vg5HrCQxNMVpPs6zyO"></script>
 </head>
 
@@ -32,7 +30,9 @@
 
         // 搜索完成后的回调函数
         localSearch.setSearchCompleteCallback(function(searchResult) {
+            // 如果搜索到了结果
             if (searchResult.getPoi(0)) {
+              // 拿出第一条搜索结果
               let poi = searchResult.getPoi(0);              
               resArr.push({
                   name: searchResult.keyword,

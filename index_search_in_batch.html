@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>批量查询经纬度</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <style>
+        body {
+            padding-top: 20px;
+        }
+
+        #myMap {
+            height: 480px;
+        }
+    </style>
+    <script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=zuBIEvSSyqLKr2Vg5HrCQxNMVpPs6zyO"></script>
+</head>
+
+<body>
+    <div id="myMap"></div>
+    </div>
+    <script type="text/javascript">
+        let arr = ['青岛市银川西路148号', '哈尔滨市道里区机场路17号', '九江市长江大道（高速路九江南出口对面）']
+        let resArr = []
+
+        let map = new BMap.Map("myMap");
+        map.centerAndZoom("北京", 12); //这里是初始地图所显示的城市          
+
+        // 构建搜索实例
+        let localSearch = new BMap.LocalSearch(map);
+
+        // 搜索完成后的回调函数
+        localSearch.setSearchCompleteCallback(function(searchResult) {
+            if (searchResult.getPoi(0)) {
+              let poi = searchResult.getPoi(0);              
+              resArr.push({
+                  name: searchResult.keyword,
+                  lat: poi.point.lat,
+                  lng: poi.point.lng
+              })
+            }
+        });
+
+        arr.forEach((v, i) => {
+            localSearch.search(v);
+        })
+
+        console.log(resArr)
+    </script>
+
+</html>

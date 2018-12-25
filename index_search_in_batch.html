@@ -39,11 +39,12 @@
                   lat: poi.point.lat,
                   lng: poi.point.lng
               })
-              console.log(JSON.stringify(resArr))
+              console.log(JSON.stringify(resArr,null,2))
             }
         });
 
         arr.forEach((v, i) => {
+            console.log(i)
             localSearch.search(v);
         })
 

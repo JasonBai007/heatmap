@@ -1,5 +1,6 @@
 # heatmap
-generate a heatmap with baidu map api.
+generate a heatmap with baidu map api.  
+get LAL(经纬度) from a specific location.
 
 ## Baidu Map API Features
 
@@ -40,6 +41,11 @@ generate a heatmap with baidu map api.
 不推荐理由：
 1. 逻辑复杂
 2. 依赖多
+
+## about search LAL（根据地址查询经纬度）
+
+1. 通过输入具体的单个地址，查询单个经纬度
+2. 通过程序，批量查询经纬度
 
 ## How to use
 

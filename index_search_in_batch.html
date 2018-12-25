@@ -23,33 +23,31 @@
         let resArr = []
 
         let map = new BMap.Map("myMap");
-        map.centerAndZoom(new BMap.Point(116.404, 39.915), 11); // 必须这么写，否则有问题    
-        console.log(map)    
+        map.centerAndZoom(new BMap.Point(116.404, 39.915), 11); // 必须这么写，否则有下面注释说的问题 
+        // map.centerAndZoom('北京', 11); // 这么写的话，会出现重复请求的问题，所以，严禁这么写
+
+        let options = {
+            onSearchComplete: function(searchResult) {
+                if (localSearch.getStatus() == BMAP_STATUS_SUCCESS) {
+                    // 拿出第一条搜索结果
+                    let poi = searchResult.getPoi(0);
+                    resArr.push({
+                        name: searchResult.keyword,
+                        lat: poi.point.lat,
+                        lng: poi.point.lng
+                    })
+                    console.log(JSON.stringify(resArr, null, 2))
+                }
+            }
+        }
 
         // 构建搜索实例
-        let localSearch = new BMap.LocalSearch(map);
-
-        // 搜索完成后的回调函数
-        localSearch.setSearchCompleteCallback(function(searchResult) {
-            // 如果搜索到了结果
-            if (searchResult.getPoi(0)) {
-              // 拿出第一条搜索结果
-              let poi = searchResult.getPoi(0);              
-              resArr.push({
-                  name: searchResult.keyword,
-                  lat: poi.point.lat,
-                  lng: poi.point.lng
-              })
-              console.log(JSON.stringify(resArr,null,2))
-            }
-        });
+        let localSearch = new BMap.LocalSearch(map, options);
 
         arr.forEach((v, i) => {
             console.log(i)
             localSearch.search(v);
         })
-
-        // console.log(resArr)
     </script>
 
 </html>
